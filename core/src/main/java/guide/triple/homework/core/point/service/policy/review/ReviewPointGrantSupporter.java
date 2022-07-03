@@ -25,6 +25,7 @@ public class ReviewPointGrantSupporter implements PointGrantPolicySupporter<Revi
 
     @Override
     public Set<PointGrantType> getPointGrantTypes(ReviewEventDTO eventDTO) {
+
         return policies.stream()
                 .map(policy -> policy.getPointGrantType(eventDTO))
                 .map(grantType -> grantType.orElse(null))

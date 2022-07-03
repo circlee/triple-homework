@@ -19,7 +19,7 @@ public class ReviewEventDTO extends EventDTO{
 
 
     @Override
-    EVENT_TYPE getType() {
+    public EVENT_TYPE getType() {
         return EVENT_TYPE.REVIEW;
     }
 }

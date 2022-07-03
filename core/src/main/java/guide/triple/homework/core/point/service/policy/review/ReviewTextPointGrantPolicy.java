@@ -1,6 +1,7 @@
 package guide.triple.homework.core.point.service.policy.review;
 
 import guide.triple.homework.core.point.domain.PointGrantType;
+import guide.triple.homework.core.point.service.dto.EventDTO;
 import guide.triple.homework.core.point.service.dto.ReviewEventDTO;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,10 @@ class ReviewTextPointGrantPolicy implements ReviewPointGrantPolicy {
 
     @Override
     public Optional<PointGrantType> getPointGrantType(ReviewEventDTO reviewEventDTO) {
+
+        if(reviewEventDTO.isNotAnyMatchAction(EventDTO.EVENT_ACTION.ADD, EventDTO.EVENT_ACTION.MOD)) {
+            return Optional.empty();
+        }
 
         return Optional.ofNullable(reviewEventDTO)
                 .map(ReviewEventDTO::getContent)

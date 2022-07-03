@@ -1,7 +1,11 @@
 package guide.triple.homework.core.point.service.dto;
 
+import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
+import java.util.Arrays;
+
+@Getter
 @SuperBuilder
 public abstract class EventDTO {
 
@@ -9,9 +13,30 @@ public abstract class EventDTO {
 
     private final String userId;
 
-    abstract ReviewEventDTO.EVENT_TYPE getType();
+    private final EVENT_ACTION eventAction;
 
-    enum EVENT_TYPE {
+    public abstract ReviewEventDTO.EVENT_TYPE getType();
+
+    public enum EVENT_TYPE {
         REVIEW
+    }
+
+    public enum EVENT_ACTION {
+        ADD,
+        MOD,
+        DELETE
+    }
+
+    public boolean isAnyMatchAction(EVENT_ACTION... eventActions) {
+        if(eventActions == null) {
+            return false;
+        }
+
+        return Arrays.stream(eventActions)
+                .anyMatch(this.eventAction::equals);
+    }
+
+    public boolean isNotAnyMatchAction(EVENT_ACTION... eventActions) {
+        return !isAnyMatchAction(eventActions);
     }
 }
