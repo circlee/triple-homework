@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    include:
+      - core
+
+logging:
+  level:
+    kr:
+      co:
+        _29cm: debug
+    org:
+      springframework:
+        transaction: DEBUG
+        orm:
+          jpa: DEBUG
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
