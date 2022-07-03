@@ -3,7 +3,7 @@
 - 개발 환경 JDK 14
 
 ```
-    ./gradlew build && java -jar ./cli-client/build/libs/cli-client-1.0-SNAPSHOT.jar
+    ./gradlew build && java -jar ./interface/build/libs/interface-1.0-SNAPSHOT.jar
 ```
 감사합니다.
 # triple-homework
