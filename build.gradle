@@ -54,11 +54,11 @@ project(':core') {
     }
 }
 
-//project(':interface') {
-//    bootJar { enabled = true }
-//    jar { enabled = false }
-//
-//    dependencies {
-//        implementation project(':core') // 컴파일 시 velog-core project 로딩
-//    }
-//}
+project(':app') {
+    bootJar { enabled = true }
+    jar { enabled = false }
+
+    dependencies {
+        implementation project(':core') // 컴파일 시 velog-core project 로딩
+    }
+}

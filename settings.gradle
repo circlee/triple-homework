@@ -1,5 +1,5 @@
 rootProject.name = 'triple_homework'
 include 'core'
-include 'interface'
+include 'app'
 
 
