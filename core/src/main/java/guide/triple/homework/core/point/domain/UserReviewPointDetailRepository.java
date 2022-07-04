@@ -9,4 +9,6 @@ public interface UserReviewPointDetailRepository extends JpaRepository<UserRevie
     List<UserReviewPointDetail> findAllByUserIdAndActive(String userId, boolean active);
 
     List<UserReviewPointDetail> findAllByUserIdAndReviewIdAndActive(String userId, String reviewId, boolean active);
+
+    Long countByPlaceIdAndActive(String placeId, boolean active);
 }

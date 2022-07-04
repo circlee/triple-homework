@@ -12,14 +12,15 @@ import java.util.function.Predicate;
 @Component
 class ReviewTextPointGrantPolicy implements ReviewPointGrantPolicy {
 
-    Predicate<String> CONTENT_PREDICATE = (content) -> content.trim().length() > 0;
+    private final static Predicate<String> CONTENT_PREDICATE = (content) -> content.trim().length() > 0;
 
     @Override
+    public boolean isSupportEventAction(EventDTO.EVENT_ACTION eventAction) {
+        return EventDTO.EVENT_ACTION.ADD == eventAction
+                || EventDTO.EVENT_ACTION.MOD == eventAction;
+    }
+    @Override
     public Optional<PointGrantType> getPointGrantType(ReviewEventDTO reviewEventDTO) {
-
-        if(reviewEventDTO.isNotAnyMatchAction(EventDTO.EVENT_ACTION.ADD, EventDTO.EVENT_ACTION.MOD)) {
-            return Optional.empty();
-        }
 
         return Optional.ofNullable(reviewEventDTO)
                 .map(ReviewEventDTO::getContent)

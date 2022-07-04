@@ -34,7 +34,7 @@ class UserPointOverallServiceTest {
         //then
         BigDecimal activePoint = userPointOverallService.getUserActivePoint(userId);
 
-        Assertions.assertEquals(BigDecimal.valueOf(2), activePoint);
+        Assertions.assertEquals(BigDecimal.valueOf(3), activePoint);
     }
 
     @Test
@@ -55,7 +55,7 @@ class UserPointOverallServiceTest {
         //then
         BigDecimal activePoint = userPointOverallService.getUserActivePoint(userId);
 
-        Assertions.assertEquals(BigDecimal.valueOf(4), activePoint);
+        Assertions.assertEquals(BigDecimal.valueOf(5), activePoint);
     }
 
     @Test
@@ -74,22 +74,22 @@ class UserPointOverallServiceTest {
         //when
         userPointOverallService.addUserPointByEvent(eventDTO1);
         //then
-        Assertions.assertEquals(BigDecimal.valueOf(2), userPointOverallService.getUserActivePoint(userId));
+        Assertions.assertEquals(BigDecimal.valueOf(3), userPointOverallService.getUserActivePoint(userId));
 
         //when
         userPointOverallService.addUserPointByEvent(eventDTO2);
         //then
-        Assertions.assertEquals(BigDecimal.valueOf(1), userPointOverallService.getUserActivePoint(userId));
+        Assertions.assertEquals(BigDecimal.valueOf(2), userPointOverallService.getUserActivePoint(userId));
 
         //when
         userPointOverallService.addUserPointByEvent(eventDTO3);
         //then
-        Assertions.assertEquals(BigDecimal.valueOf(0), userPointOverallService.getUserActivePoint(userId));
+        Assertions.assertEquals(BigDecimal.valueOf(1), userPointOverallService.getUserActivePoint(userId));
 
         //when
         userPointOverallService.addUserPointByEvent(eventDTO4);
         //then
-        Assertions.assertEquals(BigDecimal.valueOf(2), userPointOverallService.getUserActivePoint(userId));
+        Assertions.assertEquals(BigDecimal.valueOf(3), userPointOverallService.getUserActivePoint(userId));
 
         //when
         userPointOverallService.addUserPointByEvent(eventDTO5);

@@ -14,7 +14,7 @@ import java.util.function.Predicate;
 @Component
 class ReviewPhotoPointGrantPolicy implements ReviewPointGrantPolicy {
 
-    Predicate<List<String>> PHOTO_IDS_PREDICATE = (ids) -> {
+    private static final Predicate<List<String>> PHOTO_IDS_PREDICATE = (ids) -> {
         return ids.stream()
                 .filter(Objects::nonNull)
                 .filter(StringUtils::hasText)
@@ -23,11 +23,13 @@ class ReviewPhotoPointGrantPolicy implements ReviewPointGrantPolicy {
     };
 
     @Override
-    public Optional<PointGrantType> getPointGrantType(ReviewEventDTO reviewEventDTO) {
+    public boolean isSupportEventAction(EventDTO.EVENT_ACTION eventAction) {
+        return EventDTO.EVENT_ACTION.ADD == eventAction
+                || EventDTO.EVENT_ACTION.MOD == eventAction;
+    }
 
-        if(reviewEventDTO.isNotAnyMatchAction(EventDTO.EVENT_ACTION.ADD, EventDTO.EVENT_ACTION.MOD)) {
-            return Optional.empty();
-        }
+    @Override
+    public Optional<PointGrantType> getPointGrantType(ReviewEventDTO reviewEventDTO) {
 
         return Optional.ofNullable(reviewEventDTO)
                 .map(ReviewEventDTO::getAttachedPhotoIds)
