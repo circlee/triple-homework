@@ -21,6 +21,7 @@ command >
 - intellij .http :
 https://github.com/circlee/triple-homework/blob/a0565631f1d960e36ea72e861e5c43f416c6d107/app/src/main/resources/http
 
+- event의 순서가 보장되어 전달되는 것을 전제로 하였습니다.
 - 요구사항의 장소의 최초 리뷰시 1점 부여 관련 문의 및 의견입니다. 
     ```
     해당 구현 도메인을 리뷰 이벤트를 컨슘하는 포인트 도메인으로 이해했습니다.
