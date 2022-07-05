@@ -22,6 +22,8 @@ command >
 https://github.com/circlee/triple-homework/tree/main/app/src/main/resources/http
 
 - event의 순서가 보장되어 전달되는 것을 전제로 하였습니다.
+- /events 엔드포인트의 수신 raw body를 그대로 저장하기 위해 @RequestBody String 으로 받았습니다.
+- 개인적 일정으로 시간이 부족하여 interface 레이어에서의 validation은 생략하였습니다.
 - 요구사항의 장소의 최초 리뷰시 1점 부여 관련 문의 및 의견입니다. 
     ```
     해당 구현 도메인을 리뷰 이벤트를 컨슘하는 포인트 도메인으로 이해했습니다.
