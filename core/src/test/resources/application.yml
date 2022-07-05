@@ -1,19 +1,9 @@
 spring:
   profiles:
     include:
-      - core
+      - core-test
 
 logging:
   level:
-    kr:
-      co:
-        _29cm: debug
-    org:
-      springframework:
-        transaction: DEBUG
-        orm:
-          jpa: DEBUG
-      hibernate:
-        type:
-          descriptor:
-            sql: trace
+    guide:
+      triple: debug

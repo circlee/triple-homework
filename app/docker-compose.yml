@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  db-mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: mydb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    command:
+      - --collation-server=utf8mb4_unicode_ci
+      - --character-set-server=utf8mb4
+    ports:
+      - 4306:3306
+    networks:
+      - springboot-mysql-net
+  test-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - db-mysql
+    networks:
+      - springboot-mysql-net
+
+networks:
+  springboot-mysql-net:
+    driver: bridge

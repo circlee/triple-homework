@@ -5,9 +5,8 @@ spring:
 
 logging:
   level:
-    kr:
-      co:
-        _29cm: debug
+    guide:
+      triple: debug
     org:
       springframework:
         transaction: DEBUG
